@@ -1,4 +1,4 @@
-# InvestFlow — AI-Powered Wealth Management Platform
+# InvestFlow — Wealth Management Platform
 
 A full-stack wealth management application built for long-term investors. It tracks diverse asset classes — gold, real estate, bonds, mutual funds, fixed deposits, and stocks — and uses AI to generate personalized financial plans based on each user's risk profile and goals.
 
