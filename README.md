@@ -1,126 +1,109 @@
-#  InvestFlow — AI-Powered Wealth Management Platform
+# InvestFlow — AI-Powered Wealth Management Platform
 
-> A full-stack, long-term wealth management platform with AI-driven financial planning, real-time market data, and interactive growth projections.
-
-![Demo Recording](docs/screenshots/demo_recording.webp)
+A full-stack wealth management application built for long-term investors. It tracks diverse asset classes — gold, real estate, bonds, mutual funds, fixed deposits, and stocks — and uses AI to generate personalized financial plans based on each user's risk profile and goals.
 
 ---
 
-##  Table of Contents
+## Table of Contents
 
-- [Overview](#-overview)
-- [Key Features](#-key-features)
-- [Screenshots & Showcase](#-screenshots--showcase)
-- [Architecture](#-architecture)
-- [Tech Stack](#-tech-stack)
-- [Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Running the Application](#running-the-application)
-- [Tutorial: Using InvestFlow](#-tutorial-using-investflow)
-  - [Step 1: Create Your Account](#step-1-create-your-account)
-  - [Step 2: Take the Investor Survey](#step-2-take-the-investor-survey)
-  - [Step 3: Explore Your Dashboard](#step-3-explore-your-dashboard)
-  - [Step 4: Browse Market Data](#step-4-browse-market-data)
-  - [Step 5: Invest in Assets](#step-5-invest-in-assets)
-- [API Reference](#-api-reference)
-- [Project Structure](#-project-structure)
-- [Data Sources](#-data-sources)
-- [Configuration](#-configuration)
-- [Future Roadmap](#-future-roadmap)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Screenshots](#screenshots)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Tutorial](#tutorial)
+- [API Reference](#api-reference)
+- [Project Structure](#project-structure)
+- [Data Sources](#data-sources)
+- [Configuration](#configuration)
+- [Future Roadmap](#future-roadmap)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-##  Overview
+## Overview
 
-**InvestFlow** is a comprehensive wealth management web application designed for **long-term investors**. Unlike most stock-focused trading apps, InvestFlow helps users build diversified portfolios across multiple asset classes — including **Gold, Real Estate, Bonds, Mutual Funds, and Fixed Deposits** — with personalized AI-generated investment plans.
+Most investment platforms focus almost entirely on short-term stock trading. InvestFlow takes a different approach — it is built around **long-term wealth building**. The dashboard tracks growth projections over 1 to 25 years, factors in systematic monthly investments (SIPs), and covers asset classes that matter for serious wealth accumulation: gold, real estate, bonds, mutual funds, and fixed deposits alongside traditional equities.
 
-The platform uses **Google's Gemini AI** to analyze each user's risk profile and financial goals, then generates a customized 25-year wealth building strategy. Interactive charts visualize projected growth over 1 to 25 years, showing users exactly how their wealth can compound over time.
+When a new user signs up, they take a short 3-question survey. The responses are sent to Google's Gemini AI, which analyzes the investor's risk tolerance, financial goals, and time horizon to produce a structured investment plan. This plan — complete with asset allocation percentages and period-specific advice — appears directly on the dashboard alongside interactive growth charts.
 
----
-
-##  Key Features
-
-###  Secure Authentication
-- **bcrypt** password hashing for enterprise-grade security
-- **JWT** token-based session management (24h expiry)
-- Clean signup/login flow with instant dashboard access
-
-###  AI-Powered Financial Planning
-- 3-question investor survey to assess risk tolerance, goals, and time horizon
-- **Google Gemini AI** analyzes responses and generates a personalized investment strategy
-- Asset allocation recommendations (Gold, Real Estate, Bonds, Mutual Funds, etc.)
-- Period-specific advice (1-5 years, 5-10 years, 10-25 years)
-
-###  Wealth Growth Projections
-- Interactive area charts showing projected wealth over **1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, and 25 years**
-- Dual-line visualization: **Total Invested** vs **Total Value** (including compound gains)
-- Configurable parameters: starting capital, monthly SIP, expected return rate
-- Powered by a dedicated Python calculation engine
-
-###  Comprehensive Market Data
-- **30+ financial instruments** tracked in real-time via Yahoo Finance:
-
-| Category | Instruments |
-|----------|-------------|
-| **US Indices** | S&P 500, Dow Jones, NASDAQ |
-| **Indian Indices** | Nifty 50, BSE Sensex |
-| **US Stocks** | Apple, Microsoft, Google, Amazon, NVIDIA, Tesla |
-| **Indian Stocks** | Reliance, HDFC Bank, TCS, Infosys, ICICI Bank, SBI |
-| **Precious Metals** | Gold Futures, Silver Futures |
-| **Commodities** | Copper Futures, Crude Oil (WTI) |
-| **Bonds** | US 10Y Treasury, US 30Y Treasury, 13W T-Bill |
-| **Mutual Funds** | SBI Bluechip Fund, HDFC Flexi Cap Fund |
-| **Real Estate** | Vanguard REIT ETF, Embassy REIT India |
-| **Fixed Deposits** | iShares Short Treasury Bond ETF |
-
-- Automatic background sync every 30 minutes
-- Filterable by **category** and **region** (US, India, Global)
-
-###  Portfolio Management
-- Buy/sell any tracked asset with real-time pricing
-- Multi-asset category tracking (STOCK, GOLD, REAL_ESTATE, BOND, MUTUAL_FUND, FD)
-- Watchlist functionality
-- Transaction history
-
-###  High-Performance Architecture
-- **Go calculation engine** for blazing-fast financial projections
-- **SQLite** database (zero-configuration, no external DB server needed)
-- Polyglot microservice architecture (Node.js + Python + Go)
+The app runs entirely on your local machine with no external database server required. SQLite handles all data storage, and Yahoo Finance provides real-time market data for 30+ financial instruments across US and Indian markets.
 
 ---
 
-##  Screenshots & Showcase
+## Key Features
+
+**Authentication**
+- Passwords are hashed with bcrypt (no plaintext storage)
+- Sessions are managed with JWT tokens (24-hour expiry)
+- Simple email/password flow — no external services required
+
+**AI Financial Planning**
+- 3-question investor survey (risk tolerance, goals, time horizon)
+- Google Gemini AI generates a personalized 25-year wealth strategy
+- Asset allocation recommendations across gold, real estate, bonds, mutual funds, etc.
+- Period-specific advice broken into 1-5 year, 5-10 year, and 10-25 year segments
+
+**Wealth Growth Projections**
+- Interactive area charts showing projected wealth over 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, and 25 years
+- Two overlaid lines: total amount invested vs total value (so you can see the compound gains)
+- Configurable starting capital, monthly SIP amount, and expected annual return rate
+- Calculation engine available in both Python and Go
+
+**Market Data Coverage**
+- 30+ instruments tracked in real-time via Yahoo Finance, including:
+  - US Indices: S&P 500, Dow Jones, NASDAQ
+  - Indian Indices: Nifty 50, BSE Sensex
+  - US Stocks: Apple, Microsoft, Google, Amazon, NVIDIA, Tesla
+  - Indian Stocks: Reliance, HDFC Bank, TCS, Infosys, ICICI Bank, SBI
+  - Precious Metals: Gold and Silver Futures
+  - Commodities: Copper, Crude Oil (WTI)
+  - Bonds: US 10Y Treasury, US 30Y Treasury, 13W T-Bill
+  - Mutual Funds: SBI Bluechip Fund, HDFC Flexi Cap Fund
+  - Real Estate: Vanguard REIT ETF, Embassy REIT India
+  - Fixed Deposits: iShares Short Treasury Bond ETF
+- Data syncs automatically every 30 minutes
+- API supports filtering by category and region
+
+**Portfolio Management**
+- Buy and sell any tracked asset
+- Holdings categorized by type (STOCK, GOLD, REAL_ESTATE, BOND, MUTUAL_FUND, FD)
+- Watchlist support
+- Full transaction history
+
+---
+
+## Screenshots
 
 ### Login Page
-Clean, minimal authentication with email and password.
+Standard email and password authentication. No external dependencies.
 
 ![Login Page](docs/screenshots/01_login.png)
 
 ### Sign Up
-Create an account with your name, email, password, and starting capital.
+Users provide their name, email, password, and starting investment capital.
 
 ![Sign Up](docs/screenshots/02_signup.png)
 
-### Dashboard — Survey Prompt
-First-time users see a call-to-action to take the AI investor survey.
+### Dashboard — First Visit
+New users see a prompt to take the AI investor survey before their plan is generated.
 
 ![Dashboard Survey CTA](docs/screenshots/03_dashboard.png)
 
 ### Investor Survey — Risk Assessment
-A 3-step survey to determine your risk tolerance, goals, and time horizon.
+The first of three questions. Users select their comfort level with investment risk.
 
 ![Survey - Risk](docs/screenshots/04_survey.png)
 
 ### Investor Survey — Goal Selection
-Select your primary investment goal (Retirement, Home, Education, or General Wealth).
+Users choose what they are investing for — retirement, buying a home, education, or general wealth building.
 
 ![Survey - Goal](docs/screenshots/05_survey_goal.png)
 
 ### Stocks Page
-Browse and search live stock data with real-time prices.
+Browse live stock data with real-time prices and daily change percentages.
 
 ![Stocks](docs/screenshots/06_stocks.png)
 
@@ -130,369 +113,320 @@ Track global currency exchange rates.
 ![Currencies](docs/screenshots/07_currencies.png)
 
 ### News Page
-Stay up to date with the latest financial news.
+Financial news headlines to stay informed about market movements.
 
 ![News](docs/screenshots/08_news.png)
 
 ---
 
-##  Architecture
+## Architecture
 
 ```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   React + Vite  │────▶│  Node.js + Express│────▶│   SQLite DB     │
-│   Frontend      │     │  Backend (5001)  │     │  investflow.db  │
-│   (Port 5173)   │     └────────┬─────────┘     └─────────────────┘
-└─────────────────┘              │
-                                 │ Gemini AI API
-                                 ▼
-                        ┌─────────────────┐
-                        │  Google Gemini   │
-                        │  LLM Service    │
-                        └─────────────────┘
++------------------+     +-------------------+     +------------------+
+|  React + Vite    |---->|  Node.js + Express|---->|  SQLite DB       |
+|  Frontend        |     |  Backend (5001)   |     |  investflow.db   |
+|  (Port 5173)     |     +---------+---------+     +------------------+
++------------------+               |
+                                   | Gemini AI API
+                                   v
+                          +-----------------+
+                          |  Google Gemini   |
+                          |  LLM Service    |
+                          +-----------------+
 
-┌─────────────────┐     ┌─────────────────┐
-│  Python FastAPI  │────▶│  Yahoo Finance  │
-│  Data Service   │     │  (yfinance)     │
-│  (Port 8000)    │     └─────────────────┘
-└─────────────────┘
++------------------+     +------------------+
+|  Python FastAPI  |---->|  Yahoo Finance   |
+|  Data Service    |     |  (yfinance)      |
+|  (Port 8000)     |     +------------------+
++------------------+
 
-┌─────────────────┐
-│  Go Engine      │  (Optional: high-performance projections)
-│  (Port 8080)    │
-└─────────────────┘
++------------------+
+|  Go Engine       |  (Optional: high-performance projections)
+|  (Port 8080)     |
++------------------+
 ```
 
-### Data Flow
-1. **Frontend** (React) makes API calls to the **Backend** (Node.js) and **Data Service** (Python)
-2. **Backend** handles auth, portfolio CRUD, and AI survey analysis via Gemini
-3. **Data Service** fetches live market data from Yahoo Finance and caches it in SQLite
-4. **Go Engine** (optional) provides high-speed financial calculations
+**How data flows through the system:**
+1. The React frontend makes API calls to the Node.js backend and the Python data service
+2. The backend handles authentication, portfolio operations, and AI survey analysis via Gemini
+3. The Python data service fetches live market data from Yahoo Finance and caches it in the shared SQLite database
+4. The Go engine (optional) provides an alternative high-speed calculation endpoint
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
-| **Frontend** | React 19, Vite, TailwindCSS | UI, Routing, Styling |
-| **Charts** | Recharts | Interactive area/pie/bar charts |
-| **Icons** | Lucide React | Modern icon system |
-| **Backend** | Node.js, Express 5 | REST API, Authentication |
-| **Auth** | bcryptjs, jsonwebtoken | Password hashing, JWT sessions |
-| **Database** | SQLite 3 | Zero-config relational storage |
-| **AI** | Google Gemini 1.5 Flash | Investment plan generation |
-| **Data** | Python, FastAPI, yfinance | Market data ingestion |
-| **Performance** | Go (Golang) | High-speed calculations |
+| Frontend | React 19, Vite, TailwindCSS | UI, routing, styling |
+| Charts | Recharts | Interactive area, pie, and bar charts |
+| Icons | Lucide React | Icon system |
+| Backend | Node.js, Express 5 | REST API, authentication |
+| Auth | bcryptjs, jsonwebtoken | Password hashing, JWT sessions |
+| Database | SQLite 3 | Zero-config relational storage |
+| AI | Google Gemini 1.5 Flash | Investment plan generation |
+| Data | Python, FastAPI, yfinance | Market data ingestion and caching |
+| Performance | Go (Golang) | High-speed financial calculations |
 
 ---
 
-##  Getting Started
+## Getting Started
 
 ### Prerequisites
 
 | Requirement | Version | Check Command |
 |-------------|---------|---------------|
-| **Node.js** | ≥ 18.x | `node --version` |
-| **Python** | ≥ 3.10 | `python --version` |
-| **npm** | ≥ 9.x | `npm --version` |
-| **Go** *(optional)* | ≥ 1.21 | `go version` |
+| Node.js | 18.x or newer | `node --version` |
+| Python | 3.10 or newer | `python --version` |
+| npm | 9.x or newer | `npm --version` |
+| Go (optional) | 1.21 or newer | `go version` |
 
 ### Installation
 
-#### 1. Clone the Repository
+**1. Clone the repository**
 ```bash
 git clone https://github.com/your-username/investflow.git
 cd investflow
 ```
 
-#### 2. Install Backend Dependencies
+**2. Install backend dependencies**
 ```bash
 cd backend
 npm install
 ```
 
-#### 3. Install Frontend Dependencies
+**3. Install frontend dependencies**
 ```bash
 cd ../frontend
 npm install
 ```
 
-#### 4. Install Python Dependencies
+**4. Install Python dependencies**
 ```bash
 cd ../data-service
 python -m pip install fastapi uvicorn yfinance
 ```
 
-#### 5. Configure Environment Variables
-Create a `.env` file in the `backend/` directory:
+**5. Set up environment variables**
+
+Create a file called `.env` inside the `backend/` directory:
 
 ```env
-# Database (SQLite - no config needed, auto-created)
-# JWT
-JWT_SECRET=your_super_secret_key_here
-
-# Google Gemini AI (for investment plan generation)
+JWT_SECRET=pick_any_random_string_here
 GEMINI_API_KEY=your_gemini_api_key_here
-
-# Server
 PORT=5001
 ```
 
->  **Getting a Gemini API Key**: Visit [Google AI Studio](https://aistudio.google.com/apikey) and create a free API key.
+To get a Gemini API key, go to [Google AI Studio](https://aistudio.google.com/apikey) and create one for free. The app will still work without it, but the AI survey will return a generic fallback plan instead of a personalized one.
 
 ### Running the Application
 
-#### Option A: One-Click Start (Windows)
-Double-click `run_investflow.bat` in the project root. This starts all 3 services automatically.
+**Option A: One-click start (Windows)**
 
-#### Option B: Manual Start (3 terminals)
+Double-click `run_investflow.bat` in the project root. It opens three terminal windows — one for each service.
 
-**Terminal 1 — Backend:**
+**Option B: Manual start (any OS)**
+
+Open three separate terminals:
+
+Terminal 1 — Backend:
 ```bash
 cd backend
 npm start
 ```
 
-**Terminal 2 — Data Service:**
+Terminal 2 — Data Service:
 ```bash
 cd data-service
 python main.py
 ```
 
-**Terminal 3 — Frontend:**
+Terminal 3 — Frontend:
 ```bash
 cd frontend
 npm run dev
 ```
 
-####  Access the App
-Open your browser to: **http://localhost:5173**
+Once all three are running, open your browser to **http://localhost:5173**.
 
 ---
 
-##  Tutorial: Using InvestFlow
+## Tutorial
 
-### Step 1: Create Your Account
+### Step 1: Create your account
 
-1. Navigate to `http://localhost:5173`
-2. Click **"Create one"** at the bottom of the login form
-3. Fill in your details:
-   - **Full Name**: Your display name
-   - **Email**: Your email address (used for login)
-   - **Password**: Choose a secure password
-   - **Starting Capital**: Enter your initial investment amount (e.g., ₹10,00,000)
-4. Click **"Create Account"**
-5. You'll be taken directly to your Dashboard!
+Go to http://localhost:5173. You will see a login page. Click "Create one" at the bottom to switch to the sign-up form. Enter your name, email, a password, and how much starting capital you want to simulate with (for example, 1000000 for ten lakhs). Click "Create Account" and you will be taken straight to your dashboard.
 
-### Step 2: Take the Investor Survey
+### Step 2: Take the investor survey
 
-1. On the Dashboard, you'll see a prominent **"Build Your AI Financial Plan"** card
-2. Click **"Take the Survey →"**
-3. Answer 3 questions:
-   - **Risk Tolerance**: Conservative / Moderate / Aggressive
-   - **Investment Goal**: Retirement / Home / Education / General Wealth
-   - **Time Horizon**: Short (1-3Y) / Medium (5-10Y) / Long (15-25Y)
-4. The AI will analyze your responses and generate a personalized plan
-5. Your Dashboard will transform to show:
-   - Your AI-generated investment strategy
-   - Asset allocation pie chart (Gold, Real Estate, Bonds, etc.)
-   - Period-specific financial advice
+On your dashboard, there is a large card at the top that says "Build Your AI Financial Plan." Click the button to start the survey. It asks three questions:
 
-### Step 3: Explore Your Dashboard
+1. **Risk tolerance** — Are you conservative, moderate, or aggressive?
+2. **Investment goal** — What are you saving for? (Retirement, a home, education, or general wealth)
+3. **Time horizon** — How long do you plan to invest? (1-3 years, 5-10 years, or 15-25 years)
 
-Your Dashboard now displays:
-- **Net Worth** card — total value of all assets + cash
-- **Liquid Cash** — available balance for investing
-- **25Y Projected** — estimated wealth after 25 years of investing
-- **Wealth Growth Chart** — interactive chart showing compound growth
-  - Toggle between **5Y, 10Y, 15Y, 25Y** views
-  - Blue area = Total Invested, Green area = Total Value (with gains)
-- **Gains Breakdown** — see exact projected values for each year
-- **Market Overview** — live prices grouped by category
+After you answer all three, the AI generates your plan and you are redirected back to the dashboard.
 
-### Step 4: Browse Market Data
+### Step 3: Explore your dashboard
 
-Use the sidebar navigation to explore:
-- **Stocks** — Search and browse global stocks (US + India)
-- **Currencies** — Track forex rates
-- **Fixed Deposits** — Compare FD rates
-- **News** — Latest financial headlines
+Your dashboard now shows several things:
 
-Click on any stock/instrument to see:
-- Live price and change percentage
-- Interactive price history chart (1W, 1M, 3M, 6M, 1Y)
-- Buy/Sell options
+- Your AI-generated strategy summary with a quote explaining the approach
+- An asset allocation pie chart showing recommended percentages for each asset class
+- Period-specific advice cards (what to focus on in years 1-5, 5-10, and 10-25)
+- Four stat cards: Net Worth, Liquid Cash, 25-Year Projected Value, and number of Holdings
+- A wealth growth chart — toggle between 5, 10, 15, and 25 year views. The green line shows total projected value and the blue line shows total invested. The gap between them is your compound gains.
+- A gains breakdown grid showing exact numbers for each milestone year
+- A full market overview section with live prices grouped by category
 
-### Step 5: Invest in Assets
+### Step 4: Browse market data
 
-1. Navigate to any stock detail page (e.g., click on "Reliance Industries")
-2. Enter the number of shares you want to buy
-3. Click **"Buy"**
-4. Your portfolio will update in real-time
-5. View your holdings on the Dashboard under **"Your Holdings"**
+Use the sidebar to navigate to the Stocks page. You can search for any ticker symbol. Click on a stock to see its detail page with price history charts (1 week to 1 year ranges) and buy/sell controls.
+
+The dashboard's Market Overview section shows all tracked instruments organized by category — indices, stocks, precious metals, commodities, bonds, mutual funds, real estate, and fixed deposits.
+
+### Step 5: Make an investment
+
+On any stock detail page, enter the number of shares you want to buy and click Buy. Your liquid cash decreases and the holding appears in your portfolio. You can sell later from the same page. All transactions are recorded.
 
 ---
 
-##  API Reference
+## API Reference
 
 ### Authentication
+
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `POST` | `/api/auth/register` | Create a new account |
-| `POST` | `/api/auth/login` | Sign in with email/password |
+| POST | `/api/auth/register` | Create a new account |
+| POST | `/api/auth/login` | Sign in with email and password |
 
 ### Portfolio
+
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `GET` | `/api/portfolio/:userId` | Get user's full portfolio |
-| `POST` | `/api/invest` | Buy or sell an asset |
-| `POST` | `/api/watchlist` | Add/remove from watchlist |
+| GET | `/api/portfolio/:userId` | Get full portfolio (holdings, watchlist, plan) |
+| POST | `/api/invest` | Buy or sell an asset |
+| POST | `/api/watchlist` | Add or remove from watchlist |
 
 ### AI Survey
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/api/survey/analyze` | Submit survey & get AI plan |
 
-### Market Data (Python Service — Port 8000)
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `GET` | `/api/market-data` | All cached market data |
-| `GET` | `/api/market-data?category=GOLD` | Filter by category |
-| `GET` | `/api/market-data?region=IN` | Filter by region |
-| `GET` | `/api/ticker/{symbol}` | Live ticker info |
-| `GET` | `/api/history/{symbol}?range=1Y` | Price history |
-| `GET` | `/api/growth-projection` | Wealth growth calculator |
+| POST | `/api/survey/analyze` | Submit survey answers, get AI-generated plan |
+
+### Market Data (Python service on port 8000)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/market-data` | All cached market data |
+| GET | `/api/market-data?category=GOLD` | Filter by asset category |
+| GET | `/api/market-data?region=IN` | Filter by region (US, IN, GLOBAL) |
+| GET | `/api/ticker/{symbol}` | Live price for a specific ticker |
+| GET | `/api/history/{symbol}?range=1Y` | Historical price data |
+| GET | `/api/growth-projection` | Calculate wealth growth projections |
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```
 investflow/
-├── backend/                    # Node.js API Server
-│   ├── index.js               # Main server (auth, portfolio, survey)
-│   ├── db.js                  # SQLite database initialization
-│   ├── mailer.js              # Email service (unused, kept for reference)
+├── backend/                    
+│   ├── index.js               # Main server — auth, portfolio, survey endpoints
+│   ├── db.js                  # SQLite database setup and query wrapper
 │   ├── services/
-│   │   └── llmService.js     # Google Gemini AI integration
-│   ├── investflow.db          # SQLite database file (auto-created)
+│   │   └── llmService.js      # Google Gemini AI integration
+│   ├── investflow.db          # Database file (auto-created on first run)
 │   ├── .env                   # Environment variables
 │   └── package.json
 │
-├── frontend/                   # React + Vite Frontend
+├── frontend/                   
 │   ├── src/
 │   │   ├── pages/
 │   │   │   ├── Login.jsx      # Authentication page
-│   │   │   ├── Dashboard.jsx  # Main wealth dashboard
-│   │   │   ├── Survey.jsx     # AI investor survey
+│   │   │   ├── Dashboard.jsx  # Main wealth dashboard with charts
+│   │   │   ├── Survey.jsx     # AI investor survey (3 questions)
 │   │   │   ├── Stocks.jsx     # Stock market browser
-│   │   │   ├── StockDetail.jsx# Individual stock view
-│   │   │   ├── Currencies.jsx # Forex tracker
+│   │   │   ├── StockDetail.jsx# Individual stock view with buy/sell
+│   │   │   ├── Currencies.jsx # Currency exchange rates
 │   │   │   ├── FixedDeposits.jsx
-│   │   │   └── News.jsx       # Financial news
+│   │   │   └── News.jsx       # Financial news feed
 │   │   ├── components/
 │   │   │   ├── Sidebar.jsx    # Navigation sidebar
-│   │   │   ├── StatCard.jsx   # Dashboard stat cards
-│   │   │   └── StockRow.jsx   # Stock list item
+│   │   │   ├── StatCard.jsx   # Dashboard metric cards
+│   │   │   └── StockRow.jsx   # Stock list row component
 │   │   ├── context/
-│   │   │   └── AuthContext.jsx# Auth state management
-│   │   └── App.jsx            # Routes & layout
+│   │   │   └── AuthContext.jsx # Authentication state management
+│   │   └── App.jsx            # Route definitions and layout
 │   └── package.json
 │
-├── data-service/               # Python Market Data Engine
-│   └── main.py                # FastAPI server (yfinance + SQLite)
+├── data-service/               
+│   └── main.py                # FastAPI server — yfinance data + SQLite caching
 │
-├── calc-engine/                # Go High-Performance Engine
-│   └── main.go                # Growth projection calculations
+├── calc-engine/                
+│   └── main.go                # Go-based financial projection calculator
 │
-├── docs/
-│   └── screenshots/           # App screenshots for README
-│
-├── run_investflow.bat          # One-click Windows launcher
-├── system_architecture.md      # Detailed architecture docs
-└── README.md                   # You are here!
+├── docs/screenshots/          # Screenshots used in this README
+├── run_investflow.bat         # Windows one-click launcher
+├── system_architecture.md     # Detailed architecture documentation
+└── README.md
 ```
 
 ---
 
-##  Data Sources
+## Data Sources
 
-| Source | Data Type | Update Frequency |
-|--------|-----------|-----------------|
-| [Yahoo Finance](https://finance.yahoo.com) via `yfinance` | Stocks, Indices, Commodities, Bonds, ETFs | Every 30 minutes |
-| [Google Gemini](https://ai.google.dev) | AI investment plan generation | On-demand (survey) |
-
-### Tracked Asset Categories
-
-- **INDEX**: S&P 500, Dow Jones, NASDAQ, Nifty 50, Sensex
-- **STOCK**: AAPL, MSFT, GOOGL, AMZN, NVDA, TSLA, RELIANCE, HDFC, TCS, INFY, ICICI, SBI
-- **GOLD**: Gold Futures, Silver Futures
-- **COMMODITY**: Copper, Crude Oil
-- **BOND**: US 10Y/30Y Treasury, 13W T-Bill
-- **MUTUAL_FUND**: SBI Bluechip, HDFC Flexi Cap
-- **REAL_ESTATE**: Vanguard REIT ETF, Embassy REIT India
-- **FD**: iShares Short Treasury Bond ETF
+| Source | What It Provides | Update Frequency |
+|--------|-----------------|-----------------|
+| Yahoo Finance (via yfinance) | Stock prices, indices, commodities, bonds, ETFs | Every 30 minutes |
+| Google Gemini | AI-generated investment plans | On demand (when user takes survey) |
 
 ---
 
-##  Configuration
+## Configuration
 
-### Environment Variables (`backend/.env`)
+### Environment Variables
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `JWT_SECRET` | Yes | Secret key for signing auth tokens |
-| `GEMINI_API_KEY` | Yes* | Google Gemini API key for AI plans |
-| `PORT` | No | Backend port (default: 5001) |
+| `JWT_SECRET` | Yes | Secret key for signing authentication tokens |
+| `GEMINI_API_KEY` | Recommended | Google Gemini API key for AI plan generation |
+| `PORT` | No | Backend port (defaults to 5001) |
 
-> *The app works without a Gemini key, but the AI survey will return a fallback generic plan.
+### Service Ports
 
-### Port Configuration
-
-| Service | Default Port | Configurable |
-|---------|-------------|-------------|
-| Frontend (Vite) | 5173 | `npm run dev -- --port XXXX` |
-| Backend (Express) | 5001 | `PORT` in `.env` |
-| Data Service (FastAPI) | 8000 | Edit `main.py` |
-| Go Engine | 8080 | Edit `main.go` |
+| Service | Default Port |
+|---------|-------------|
+| Frontend (Vite) | 5173 |
+| Backend (Express) | 5001 |
+| Data Service (FastAPI) | 8000 |
+| Go Engine | 8080 |
 
 ---
 
 ## Future Roadmap
 
-- [ ] **Real-time WebSocket updates** for live price streaming
-- [ ] **Portfolio analytics** — sector diversification, risk scoring
-- [ ] **Tax calculator** — estimate capital gains tax for India
-- [ ] **SIP automation** — scheduled monthly investments
-- [ ] **Mobile responsive** — PWA support
-- [ ] **Export reports** — PDF portfolio summaries
-- [ ] **Multi-currency support** — INR, USD, EUR
-- [ ] **Social features** — share portfolios, compare with friends
-- [ ] **Advanced charting** — candlestick charts, technical indicators
+- Real-time WebSocket price streaming
+- Portfolio analytics with sector diversification and risk scoring
+- Capital gains tax calculator for Indian investors
+- Automated SIP scheduling
+- PDF portfolio report export
+- Multi-currency support (INR, USD, EUR)
+- Candlestick charts and technical indicators
+- Mobile-responsive progressive web app
 
 ---
 
-##  Contributing
+## Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add your feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
 5. Open a Pull Request
 
 ---
 
-##  License
+## License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
-
----
-
-<div align="center">
-
-**Built with love for long-term wealth builders**
-
-[Report Bug](../../issues) · [Request Feature](../../issues)
-
-</div>
+This project is licensed under the MIT License. See the LICENSE file for details.
