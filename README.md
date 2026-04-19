@@ -1,4 +1,4 @@
-# 🚀 InvestFlow — AI-Powered Wealth Management Platform
+#  InvestFlow — AI-Powered Wealth Management Platform
 
 > A full-stack, long-term wealth management platform with AI-driven financial planning, real-time market data, and interactive growth projections.
 
@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Overview](#-overview)
 - [Key Features](#-key-features)
@@ -33,7 +33,7 @@
 
 ---
 
-## 🌟 Overview
+##  Overview
 
 **InvestFlow** is a comprehensive wealth management web application designed for **long-term investors**. Unlike most stock-focused trading apps, InvestFlow helps users build diversified portfolios across multiple asset classes — including **Gold, Real Estate, Bonds, Mutual Funds, and Fixed Deposits** — with personalized AI-generated investment plans.
 
@@ -41,26 +41,26 @@ The platform uses **Google's Gemini AI** to analyze each user's risk profile and
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
-### 🔐 Secure Authentication
+###  Secure Authentication
 - **bcrypt** password hashing for enterprise-grade security
 - **JWT** token-based session management (24h expiry)
 - Clean signup/login flow with instant dashboard access
 
-### 🤖 AI-Powered Financial Planning
+###  AI-Powered Financial Planning
 - 3-question investor survey to assess risk tolerance, goals, and time horizon
 - **Google Gemini AI** analyzes responses and generates a personalized investment strategy
 - Asset allocation recommendations (Gold, Real Estate, Bonds, Mutual Funds, etc.)
 - Period-specific advice (1-5 years, 5-10 years, 10-25 years)
 
-### 📊 Wealth Growth Projections
+###  Wealth Growth Projections
 - Interactive area charts showing projected wealth over **1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, and 25 years**
 - Dual-line visualization: **Total Invested** vs **Total Value** (including compound gains)
 - Configurable parameters: starting capital, monthly SIP, expected return rate
 - Powered by a dedicated Python calculation engine
 
-### 📈 Comprehensive Market Data
+###  Comprehensive Market Data
 - **30+ financial instruments** tracked in real-time via Yahoo Finance:
 
 | Category | Instruments |
@@ -79,20 +79,20 @@ The platform uses **Google's Gemini AI** to analyze each user's risk profile and
 - Automatic background sync every 30 minutes
 - Filterable by **category** and **region** (US, India, Global)
 
-### 💼 Portfolio Management
+###  Portfolio Management
 - Buy/sell any tracked asset with real-time pricing
 - Multi-asset category tracking (STOCK, GOLD, REAL_ESTATE, BOND, MUTUAL_FUND, FD)
 - Watchlist functionality
 - Transaction history
 
-### 🏗️ High-Performance Architecture
+###  High-Performance Architecture
 - **Go calculation engine** for blazing-fast financial projections
 - **SQLite** database (zero-configuration, no external DB server needed)
 - Polyglot microservice architecture (Node.js + Python + Go)
 
 ---
 
-## 📸 Screenshots & Showcase
+##  Screenshots & Showcase
 
 ### Login Page
 Clean, minimal authentication with email and password.
@@ -136,7 +136,7 @@ Stay up to date with the latest financial news.
 
 ---
 
-## 🏛️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
@@ -171,7 +171,7 @@ Stay up to date with the latest financial news.
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
@@ -187,7 +187,7 @@ Stay up to date with the latest financial news.
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -239,7 +239,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 PORT=5001
 ```
 
-> 💡 **Getting a Gemini API Key**: Visit [Google AI Studio](https://aistudio.google.com/apikey) and create a free API key.
+>  **Getting a Gemini API Key**: Visit [Google AI Studio](https://aistudio.google.com/apikey) and create a free API key.
 
 ### Running the Application
 
@@ -266,12 +266,12 @@ cd frontend
 npm run dev
 ```
 
-#### 🌐 Access the App
+####  Access the App
 Open your browser to: **http://localhost:5173**
 
 ---
 
-## 📖 Tutorial: Using InvestFlow
+##  Tutorial: Using InvestFlow
 
 ### Step 1: Create Your Account
 
@@ -334,7 +334,7 @@ Click on any stock/instrument to see:
 
 ---
 
-## 📡 API Reference
+##  API Reference
 
 ### Authentication
 | Method | Endpoint | Description |
@@ -366,7 +366,7 @@ Click on any stock/instrument to see:
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 investflow/
@@ -416,7 +416,7 @@ investflow/
 
 ---
 
-## 📊 Data Sources
+##  Data Sources
 
 | Source | Data Type | Update Frequency |
 |--------|-----------|-----------------|
@@ -436,7 +436,7 @@ investflow/
 
 ---
 
-## ⚙️ Configuration
+##  Configuration
 
 ### Environment Variables (`backend/.env`)
 
@@ -459,7 +459,7 @@ investflow/
 
 ---
 
-## 🗺️ Future Roadmap
+## Future Roadmap
 
 - [ ] **Real-time WebSocket updates** for live price streaming
 - [ ] **Portfolio analytics** — sector diversification, risk scoring
@@ -473,7 +473,7 @@ investflow/
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -483,7 +483,7 @@ investflow/
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
@@ -491,7 +491,7 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 <div align="center">
 
-**Built with ❤️ for long-term wealth builders**
+**Built with love for long-term wealth builders**
 
 [Report Bug](../../issues) · [Request Feature](../../issues)
 
